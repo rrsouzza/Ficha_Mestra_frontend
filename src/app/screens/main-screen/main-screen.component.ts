@@ -10,14 +10,20 @@ import { AuthService } from '../../services/auth/auth.service';
 export class MainScreenComponent {
   menuOptions = [
     { label: 'Home', router: '/home' },
+    { label: 'Link 1', router: '/link1' },
+    { label: 'Link 2', router: '/link2' },
+    { label: 'Link 3', router: '/link3' },
+    { label: 'Link 4', router: '/link4' },
   ];
 
   username: string = 'Josué';
 
+  currentRoute: string = '/home';
+
   constructor(
     private router: Router,
     private authService: AuthService,
-  ) {}
+  ) { }
 
   routerNavigate(path: string) {
     this.router.navigate([path]);

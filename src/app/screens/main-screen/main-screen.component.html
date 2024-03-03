@@ -1,84 +1,36 @@
 <div id="main">
-  <!-- <app-alert-notification></app-alert-notification>
-  <app-popup-notifications
-    [(isMenuShowing)]="isPopupNotificationMenuShowing"
-  ></app-popup-notifications> -->
-  <header>
-    <mat-toolbar color="primary" class="d-flex justify-content-between align-items-center">
-      <aside class="d-flex align-items-center">
-        <button mat-icon-button [matMenuTriggerFor]="routers" color="basic">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <mat-menu #routers="matMenu">
-          <ng-container *ngFor="let button of menuOptions">
+  <div class="d-flex flex-row w-100 h-100vh">
+    <aside class="d-flex flex-column w-30 h-100vh bg-primary-800 border-r-inset border-primary-600">
+      <div class="d-flex justify-content-center my-5">
+        <h1 class="text-primary-200">Ficha Mestra</h1>
+      </div>
+
+      <div class="d-flex flex-column mt-4">
+        <ng-container *ngFor="let link of menuOptions">
+          <div class="d-flex justify-content-center my-2">
             <button
-              mat-menu-item
+              class="btn text-primary-300"
+              [ngClass]="currentRoute === link.router ? '' : 'text-primary-500'"
+              (click)="routerNavigate(link.router)"
             >
-              <!-- (click)="routerNavigate(item.router)" -->
-              {{ button.label }}
+              {{ link.label }}
             </button>
-          </ng-container>
-        </mat-menu>
-        <button class="btn p-0" (click)="routerNavigate('/home')">
-          <!-- <div class="product-logo"></div> -->
-          <h1>Ficha Mestra</h1>
-        </button>
-      </aside>
-      <aside class="d-flex align-items-center">
-        <app-avatar
-          class="mx-1"
-          [matMenuTriggerFor]="menuSettings"
-          [avatar_url]="''"
-        >
-        </app-avatar>
-
-        <mat-menu #menuSettings="matMenu">
-          <div class="d-flex flex-column p-2 box-username">
-            <strong class="mat-card-subtitle m-0">
-              Logado como:
-            </strong>
-            <span class="text-truncate mat-card-subtitle mb-2">{{ username }}</span>
           </div>
+        </ng-container>
 
-          <mat-divider></mat-divider>
-
-          <!-- <button
-            mat-menu-item
-            (click)="routerNavigate('support')"
-            class="d-flex align-items-center"
+        <div class="d-flex justify-content-center my-2">
+          <button
+            class="btn text-primary-300 text-primary-500"
+            (click)="logout()"
           >
-            <ng-container *transloco="let t">
-              {{ t('btn-label-support') }}
-            </ng-container>
-          </button> -->
-          <!-- <button mat-menu-item class="d-flex align-items-center" (click)="routerNavigate('help')">
-            <ng-container *transloco="let t">
-              {{ t('btn-label-help') }}
-            </ng-container>
-          </button> -->
-          <!-- <button
-            mat-menu-item
-            (click)="routerNavigate('settings')"
-            class="d-flex align-items-center"
-          >
-            <ng-container *transloco="let t">
-              {{ t('btn-label-settings') }}
-            </ng-container>
-          </button> -->
-          <button mat-menu-item (click)="logout()" class="text-danger">
-            <ng-container *transloco="let t">
-              Logout
-            </ng-container>
+            Logout
           </button>
-          <mat-divider></mat-divider>
-          <!-- <div class="text-center f-12 text-secondary mt-1">
-            <small>v{{ version }} </small>
-          </div> -->
-        </mat-menu>
-      </aside>
-    </mat-toolbar>
-  </header>
-  <div class="pages mat-app-background box-limited" cdkScrollable id="router-page">
-    <router-outlet></router-outlet>
+        </div>
+      </div>
+    </aside>
+
+    <aside class="d-flex flex-column w-70 h-100vh" id="router-page">
+      <router-outlet></router-outlet>
+    </aside>
   </div>
 </div>
