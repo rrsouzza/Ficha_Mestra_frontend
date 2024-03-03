@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { AppRoutingModule } from './routers/app-routing.module';
+import { PlatformLocation } from '@angular/common';
+import { AppConfig } from './utils/app.config';
 
 @Component({
-  standalone: true,
   selector: 'app-root',
-  imports: [
-    AppRoutingModule
-  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor(private platformLocation: PlatformLocation) {
+    // AppConfig.baseAddress = (this.platformLocation as any)._location.origin;
+    // AppConfig.baseUrl = `${AppConfig.baseAddress}/api`;
+  }
+}
