@@ -1,1 +1,143 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@use './styles/material/custom-theme-dark.scss' as *;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@include mat.core();
+
+$my-app-primary-dark: mat.define-palette($custom-primary, 700);
+$my-app-accent-dark: mat.define-palette($custom-secondary, 600);
+$my-warn: mat.define-palette(mat.$red-palette);
+
+$custom-typography: mat.define-typography-config(
+  $font-family: 'Roboto, sans-serif',
+);
+
+$my-app-theme-dark: mat.define-dark-theme(
+  (
+    color: (
+      primary: $my-app-primary-dark,
+      accent: $my-app-accent-dark,
+      warn: $my-warn,
+    ),
+    typography: $custom-typography,
+  )
+);
+
+@include mat.core-theme($my-app-theme-dark);
+@include mat.all-component-themes($my-app-theme-dark);
+@include mat.form-field-density(-2);
+
+@mixin bg-creator($theme, $category, $palette, $value) {
+  @if ($category == 'secondary') {
+    $category: 'accent';
+  }
+
+  .bg-#{$category}-#{$value} {
+    background-color: mat.get-color-from-palette($palette, $value);
+  }
+};
+
+$categories: ('primary', 'secondary');
+$values: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900);
+
+.dark-theme {
+  @include mat.core-theme($my-app-theme-dark);
+  @include mat.all-component-themes($my-app-theme-dark);
+  @include mat.form-field-density(-2);
+
+  @each $category in $categories {
+    @each $value in $values {
+      @if ($category == 'primary') {
+        @include bg-creator('dark-theme', $category, $my-app-primary-dark, $value);
+      }
+      @if ($category == 'secondary') {
+        @include bg-creator('dark-theme', $category, $my-app-accent-dark, $value);
+      }
+    }
+  }
+}
+
+@for $i from 6 through 74 {
+  .f-#{$i} {
+    font-size: $i * 1px;
+  }
+}
+
+@for $i from 1 through 100 {
+  .h-#{$i}vh {
+    height: $i * 1vh;
+  }
+  .max-h-#{$i}vh,
+  .h-max-#{$i}vh {
+    max-height: $i * 1vh;
+  }
+
+  .min-h-#{$i}vh,
+  .h-min-#{$i}vh {
+    min-height: $i * 1vh;
+  }
+
+  .w-#{$i}vw {
+    width: $i * 1vw;
+  }
+
+  .w-#{$i} {
+    width: $i * 1%;
+  }
+  .h-#{$i} {
+    height: $i * 1%;
+  }
+
+  .max-h-#{$i} {
+    max-height: $i * 1%;
+  }
+}
+
+@media (min-width: 770px) {
+  @for $i from 1 through 100 {
+    .w-md-#{$i}vw {
+      width: $i * 1vw;
+    }
+  }
+}
+
+.rounded {
+  border-radius: 10px !important;
+}
+.top-rounded {
+  border-radius: 10px 10px 0 0;
+}
+.bottom-rounded {
+  border-radius: 0 0 10px 10px;
+}
+
+.box-limited {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.scroling-x {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.box-limited::-webkit-scrollbar {
+  width: 6px;
+  border-radius: 2px;
+}
+.scroll-hidden {
+  overflow-y: hidden;
+}
+/* Track */
+.box-limited::-webkit-scrollbar-track {
+  background: transparent;
+}
+/* Handle */
+.box-limited::-webkit-scrollbar-thumb {
+  background: rgba(#666, 0.6);
+  border-radius: 3px;
+}
+/* Handle on hover */
+.box-limited::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
