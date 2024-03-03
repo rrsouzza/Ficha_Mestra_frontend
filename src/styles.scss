@@ -36,6 +36,14 @@ $my-app-theme-dark: mat.define-dark-theme(
 
   .bg-#{$category}-#{$value} {
     background-color: mat.get-color-from-palette($palette, $value);
+  };
+
+  .text-#{$category}-#{$value} {
+    color: mat.get-color-from-palette($palette, $value);
+  };
+
+  .border-#{$category}-#{$value} {
+    border-color: mat.get-color-from-palette($palette, $value);
   }
 };
 
@@ -140,4 +148,36 @@ $values: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900);
 /* Handle on hover */
 .box-limited::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.border {
+  border-width: 1px;
+}
+.border-r {
+  border-right-width: 1px;
+}
+.border-r-inset {
+  @extend .border-r;
+  border-right-style: inset;
+}
+.border-l {
+  border-left-width: 1px;
+}
+.border-l-inset {
+  @extend .border-l;
+  border-left-style: inset;
+}
+.border-t {
+  border-top-width: 1px;
+}
+.border-t-inset {
+  @extend .border-t;
+  border-top-style: inset;
+}
+.border-b {
+  border-bottom-width: 1px;
+}
+.border-b-inset {
+  @extend .border-b;
+  border-bottom-style: inset;
 }
