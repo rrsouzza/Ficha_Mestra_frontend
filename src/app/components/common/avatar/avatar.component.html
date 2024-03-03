@@ -1,0 +1,13 @@
+<button class="d-flex p-0 container" (click)="handleClick()">
+  <div class="avatar">
+    <div class="item" [ngStyle]="custom_style">
+      <img [src]="avatar_url" alt="" />
+    </div>
+  </div>
+
+  <ng-container *ngIf="username">
+    <div class="px-1 md-removed label h-100 d-flex align-content-center justify-content-center">
+      <mat-icon class="h6 m-0 mt-1 d-flex align-items-end">expand_more</mat-icon>
+    </div>
+  </ng-container>
+</button>
