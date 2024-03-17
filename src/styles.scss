@@ -181,3 +181,7 @@ $values: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900);
   @extend .border-b;
   border-bottom-style: inset;
 }
+
+.mat-form-field-wrapper {
+  padding-bottom: 0.7em;
+}

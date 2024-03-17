@@ -10,6 +10,7 @@ import { MaterialModule } from './material.module';
 import { AvatarComponent } from './components/common/avatar/avatar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -28,6 +29,7 @@ export function tokenGetter() {
     AppRoutingModule,
     MaterialModule,
     HttpClientModule,
+    ReactiveFormsModule,
     JwtModule.forRoot({
       config: {
         headerName: 'Authorization',

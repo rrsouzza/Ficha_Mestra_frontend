@@ -1,1 +1,49 @@
-<p>login works!</p>
+<div class="d-flex flex-row h-100vh">
+  <section class="d-flex w-67vw bg-primary-900 h-100">
+    <div class="w-100 p-5">
+      <h1 class="m-2 text-secondary">Ficha Mestra</h1>
+    </div>
+  </section>
+
+  <section class="w-33vw bg-primary-400 h-100">
+    <div class="h-10vh"></div>
+
+    <div class="px-5 flex-column w-100">
+      <form [formGroup]="loginFormGroup" (submit)="handleLogin()">
+        <mat-form-field
+          appearance="outline"
+          class="my-1 col-12"
+        >
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="email"
+          >
+        </mat-form-field>
+
+        <mat-form-field
+          appearance="outline"
+          class="my-1 col-12"
+        >
+          <mat-label>Senha</mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="password"
+          >
+        </mat-form-field>
+      </form>
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="text-uppercase w-100"
+        [disabled]="!isFormValid"
+        (click)="handleLogin()"
+      >
+        Login
+      </button>
+    </div>
+  </section>
+</div>
