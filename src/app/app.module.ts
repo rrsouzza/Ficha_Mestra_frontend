@@ -11,6 +11,7 @@ import { AvatarComponent } from './components/common/avatar/avatar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserRegisterComponent } from './screens/user-register/user-register.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -23,6 +24,7 @@ export function tokenGetter() {
     LoginComponent,
     MainScreenComponent,
     AvatarComponent,
+    UserRegisterComponent,
   ],
   imports: [
     BrowserModule,

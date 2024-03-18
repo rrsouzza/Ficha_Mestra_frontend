@@ -9,7 +9,19 @@
     <div class="h-10vh"></div>
 
     <div class="px-5 flex-column w-100">
-      <form [formGroup]="loginFormGroup" (submit)="handleLoginClick()">
+      <form [formGroup]="newUserFormGroup" (submit)="handleCreateUserClick()">
+        <mat-form-field
+          appearance="outline"
+          class="my-1 col-12"
+        >
+          <mat-label>Nome</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="name"
+          >
+        </mat-form-field>
+
         <mat-form-field
           appearance="outline"
           class="my-1 col-12"
@@ -33,32 +45,32 @@
             formControlName="password"
           >
         </mat-form-field>
+
+        <mat-form-field
+          appearance="outline"
+          class="my-1 col-12"
+        >
+          <mat-label>Confirme a senha</mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="confirmPassword"
+          >
+          <ng-container *ngIf="shouldDisplayPasswordError">
+            <mat-error class="f-14">As senhas não são iguais!</mat-error>
+          </ng-container>
+        </mat-form-field>
       </form>
 
       <button
         mat-raised-button
-        color="primary"
+        color="accent"
         class="text-uppercase w-100"
         [disabled]="!isFormValid"
-        (click)="handleLoginClick()"
+        (click)="handleCreateUserClick()"
       >
-        Login
+        Salvar
       </button>
     </div>
-
-    <div class="h-8vh"></div>
-
-    <span class="text-light">ou</span>
-
-    <div class="h-8vh"></div>
-
-    <button
-      mat-raised-button
-      color="accent"
-      class="text-uppercase w-33"
-      (click)="handleCreateAccountClick()"
-    >
-      Criar conta
-    </button>
   </section>
 </div>

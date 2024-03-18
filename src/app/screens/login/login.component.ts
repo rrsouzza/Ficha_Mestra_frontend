@@ -21,7 +21,7 @@ export class LoginComponent {
     });
   }
 
-  handleLogin() {
+  handleLoginClick() {
     const data = {
       email: this.loginFormGroup.controls['email'].value,
       password: this.loginFormGroup.controls['password'].value,
@@ -30,5 +30,9 @@ export class LoginComponent {
     // Chamar o authService e realizar o login
 
     this.router.navigate(['/home']);
+  }
+
+  handleCreateAccountClick() {
+    this.router.navigate(['/new-user']);
   }
 }
