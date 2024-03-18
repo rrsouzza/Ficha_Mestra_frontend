@@ -6,8 +6,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 @include mat.core();
 
-$my-app-primary-dark: mat.define-palette($custom-primary, 700);
-$my-app-accent-dark: mat.define-palette($custom-secondary, 600);
+$my-app-primary-dark: mat.define-palette($custom-primary, 800);
+$my-app-accent-dark: mat.define-palette($custom-secondary, 800);
 $my-warn: mat.define-palette(mat.$red-palette);
 
 $custom-typography: mat.define-typography-config(
@@ -180,4 +180,8 @@ $values: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900);
 .border-b-inset {
   @extend .border-b;
   border-bottom-style: inset;
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 0.7em;
 }
