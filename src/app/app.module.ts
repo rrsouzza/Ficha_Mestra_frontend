@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserRegisterComponent } from './screens/user-register/user-register.component';
+import { StoreModule } from '@ngrx/store';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -41,6 +42,7 @@ export function tokenGetter() {
         // blacklistedRoutes: [],
       },
     }),
+    StoreModule.forRoot({}, {}),
   ],
   providers: [
     provideClientHydration(),
