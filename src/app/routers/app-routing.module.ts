@@ -13,7 +13,7 @@ export const routes: Routes = [
     path: '',
     component: MainScreenComponent,
     children: pagesRouter,
-    // canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
   },
 ];
 

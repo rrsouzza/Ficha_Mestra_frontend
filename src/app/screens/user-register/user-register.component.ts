@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-user-register',
@@ -21,7 +22,10 @@ export class UserRegisterComponent {
     );
   }
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private userService: UserService,
+  ) {
     this.newUserFormGroup = new FormGroup({
       name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -30,18 +34,30 @@ export class UserRegisterComponent {
     });
   }
 
+  onBackToLoginClick() {
+    this.router.navigate(['/login']);
+  }
+
   handleCreateUserClick() {
-    // if (this.isFormValid) {
+    if (this.isFormValid) {
       const data = {
         name: this.newUserFormGroup.controls['name'].value,
         email: this.newUserFormGroup.controls['email'].value,
         password: this.newUserFormGroup.controls['password'].value,
       };
 
-      // Realizar a requisição para salvar o usuário
-
-      this.router.navigate(['/login']);
-    // }
+      this.userService.createUser(data).subscribe({
+        next: (res: any) => {
+          if (res.success) {
+            // Mostrar uma notificação indicando que o usuário foi criado com sucesso
+            this.router.navigate(['/login']);
+          }
+        },
+        error: (err) => {
+          console.error('Ocorreu um erro ao tentar criar o usuário!', err);
+        },
+      });
+    }
   }
 
   /* Async Validators */

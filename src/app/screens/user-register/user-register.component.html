@@ -5,10 +5,16 @@
     </div>
   </section>
 
-  <section class="d-flex flex-column align-items-center w-33vw bg-primary-600 h-100">
+  <section class="d-flex flex-column align-items-center w-33vw bg-primary-800 h-100">
     <div class="h-10vh"></div>
 
     <div class="px-5 flex-column w-100">
+      <div class="mb-4">
+        <button mat-fab color="accent" (click)="onBackToLoginClick()">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+
       <form [formGroup]="newUserFormGroup" (submit)="handleCreateUserClick()">
         <mat-form-field
           appearance="outline"

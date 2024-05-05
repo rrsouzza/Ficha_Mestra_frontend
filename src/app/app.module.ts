@@ -13,6 +13,8 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserRegisterComponent } from './screens/user-register/user-register.component';
 import { StoreModule } from '@ngrx/store';
+import { AuthService } from './services/auth/auth.service';
+import { UserService } from './services/user/user.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -47,6 +49,8 @@ export function tokenGetter() {
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
+    AuthService,
+    UserService,
   ],
   bootstrap: [AppComponent],
 })
