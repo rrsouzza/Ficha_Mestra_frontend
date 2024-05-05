@@ -15,6 +15,9 @@ import { UserRegisterComponent } from './screens/user-register/user-register.com
 import { StoreModule } from '@ngrx/store';
 import { AuthService } from './services/auth/auth.service';
 import { UserService } from './services/user/user.service';
+import { reducers } from './store/app.reducer';
+import { CharactersComponent } from './components/characters/characters.component';
+import { AppEffects } from './store/app.effects';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -28,6 +31,7 @@ export function tokenGetter() {
     MainScreenComponent,
     AvatarComponent,
     UserRegisterComponent,
+    CharactersComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,8 @@ export function tokenGetter() {
         // blacklistedRoutes: [],
       },
     }),
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers),
+    AppEffects,
   ],
   providers: [
     provideClientHydration(),

@@ -185,3 +185,11 @@ $values: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900);
 .mat-form-field-wrapper {
   padding-bottom: 0.7em;
 }
+
+.standard-link {
+  text-decoration: none;
+}
+.standard-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

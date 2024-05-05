@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -10,20 +10,21 @@ import { AuthService } from '../../services/auth/auth.service';
 export class MainScreenComponent {
   menuOptions = [
     { label: 'Home', router: '/home' },
-    { label: 'Link 1', router: '/link1' },
-    { label: 'Link 2', router: '/link2' },
-    { label: 'Link 3', router: '/link3' },
-    { label: 'Link 4', router: '/link4' },
+    { label: 'Personagens', router: '/characters' },
   ];
-
-  username: string = 'Josué';
 
   currentRoute: string = '/home';
 
   constructor(
     private router: Router,
-    private authService: AuthService,
-  ) { }
+    private authService: AuthService
+  ) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.currentRoute = event.url;
+      }
+    })
+  }
 
   routerNavigate(path: string) {
     this.router.navigate([path]);
