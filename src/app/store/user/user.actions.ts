@@ -7,13 +7,8 @@ interface Payload {
 }
 
 export enum UserActions {
-  LOAD_USER = '[User] Load User',
   SET_USER = '[User] Set User',
   UPDATE_USER = '[User] Update User',
-}
-
-export class LoadUser implements Action {
-  readonly type: string = UserActions.LOAD_USER;
 }
 
 export class SetUser implements Action {

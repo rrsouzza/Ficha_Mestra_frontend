@@ -1,7 +1,7 @@
 export class AppConfig {
-  static baseAddress: string;
+  // static baseAddress: string;
 
-  static baseUrl: string;
+  static baseUrl: string = 'https://ficha-mestra-backend.onrender.com';
 
   static liveUrl: string;
 
