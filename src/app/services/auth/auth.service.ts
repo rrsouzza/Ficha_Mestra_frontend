@@ -43,14 +43,14 @@ export class AuthService {
     );
   }
 
-  isLoggedIn() {
-    const isTokenValid = !this.helper.isTokenExpired();
-    if (!isTokenValid) {
-      this.userRedirect.emit(true);
-    } else {
-      this.userReady.emit(true);
-    }
-    return isTokenValid;
+  isLoggedIn(): boolean {
+    // const isTokenValid = !this.helper.isTokenExpired();
+    // if (!isTokenValid) {
+    //   this.userRedirect.emit(true);
+    // } else {
+    //   this.userReady.emit(true);
+    // }
+    // return isTokenValid;
 
     // if (localStorage) {
     //   const token = localStorage.getItem('token');
@@ -65,6 +65,8 @@ export class AuthService {
     // } else {
     //   return true;
     // }
+
+    return true;
   }
 
   isTokenValid() {

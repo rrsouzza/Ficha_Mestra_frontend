@@ -1,3 +1,10 @@
+@if (isCreateCharacterModalVisible) {
+  <app-new-character-modal
+    (closeModal)="isCreateCharacterModalVisible = false"
+  >
+  </app-new-character-modal>
+}
+
 <div class="w-100 h-100vh p-4 bg-primary-900">
   <div class="h-4vh"></div>
 
@@ -10,12 +17,13 @@
       class="btn"
       mat-fab
       color="accent"
+      (click)="isCreateCharacterModalVisible = true"
     >
       <mat-icon>add</mat-icon>
     </button>
   </div>
 
-  <section class="d-flex h-100">
+  <section class="d-flex h-80vh">
 
   </section>
 

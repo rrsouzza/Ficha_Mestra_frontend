@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './characters.component.scss'
 })
 export class CharactersComponent {
-
+  isCreateCharacterModalVisible: boolean = false;
 }

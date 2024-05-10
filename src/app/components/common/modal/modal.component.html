@@ -1,0 +1,41 @@
+@if (isVisible) {
+  <div>
+    <div>
+      <div class="modal">
+        <div class="outside" (click)="closeModal.emit()"></div>
+        <mat-card [style]="{ width: width }" class="modal_body p-3 d-flex flex-column">
+          <header>
+            <div
+              class="d-flex w-100"
+              [ngClass]="{'justify-content-between': isXCloseButtonVisible }"
+            >
+              <div>
+                <legend
+                  class="text-light"
+                  [ngClass]="headerSubtitle ? 'mb-0' : ''"
+                >
+                  {{ headerTitle }}
+                </legend>
+                @if (headerSubtitle) {
+                  <div class="d-flex mb-3">
+                    <span class="text-muted">
+                      {{ headerSubtitle }}
+                    </span>
+                  </div>
+                }
+              </div>
+              @if (isXCloseButtonVisible) {
+                <button class="btn btn-sm text-light" (click)="closeModal.emit()">
+                  <mat-icon>close</mat-icon>
+                </button>
+              }
+            </div>
+          </header>
+          <aside class="body_content">
+            <ng-content></ng-content>
+          </aside>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+}
