@@ -5,22 +5,70 @@
 >
   <section class="box-limited p-4">
     <form class="row" [formGroup]="newCharacterFormGroup" autocomplete="off">
+      
       <div class="mt-2 col-12 col-md-6">
         <mat-form-field class="w-100" appearance="outline">
-          <mat-label>Campo Número 1</mat-label>
+          <mat-label>Nome Do Personagem:</mat-label>
           <input matInput type="text" [value]="currentCharacterData.nome" formControlName="name" />
         </mat-form-field>
       </div>
 
       <div class="mt-2 col-12 col-md-6">
         <mat-form-field class="w-100" appearance="outline">
-          <mat-label>Campo Número 2</mat-label>
-          <input
-            matInput
-            type="text"
-            [value]="currentCharacterData.raca"
-            formControlName="age"
-          />
+          <mat-label>Classe:</mat-label>
+          <mat-select>
+            <select name="Artífice" id=""> Artífice </select>
+            <select name="Bárbaro" id=""> Bárbaro </select>
+            <select name="Bardo" id=""> Bardo </select>
+            <select name="Clérigo" id=""> Clérigo </select>
+            <select name="Druida" id=""> Druida </select>
+            <select name="Gerreiro" id=""> Gerreiro </select>
+            <select name="Monge" id=""> Monge </select>
+            <select name="Paladino" id=""> Paladino </select>
+            <select name="Ranger" id=""> Ranger </select>
+            <select name="Ladino" id=""> Ladino </select>
+            <select name="Feiticeiro" id=""> Feiticeiro </select>
+            <select name="Bruxo" id=""> Bruxo </select>
+            <select name="Mago" id=""> Mago </select>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="mt-2 col-12 col-md-6">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Raça:</mat-label>
+          <mat-select>
+            <select name="Anão" id="">Anão</select>
+            <select name="Draconato" id="">Draconato</select>
+            <select name="Elfo" id="">Elfo</select>
+            <select name="Gnomo" id="">Gnomo</select>
+            <select name="Meio_Elfo" id="">Meio Elfo</select>
+            <select name="Meio_Orc" id="">Meio Orc</select>
+            <select name="Halfling" id="">Halfling</select>
+            <select name="Humano" id="">Humano</select>
+            <select name="Tielfling" id="">Tielfling</select>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="mt-2 col-12 col-md-6">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Antecedente:</mat-label>
+          <mat-select>
+            <select name="Acolito" id="">Acólito</select>
+            <select name="Artesao_de_Guilda" id="">Artesão de Guilda</select>
+            <select name="Artista" id="">Artista</select>
+            <select name="Charlatao" id="">Charlatão</select>
+            <select name="Criminoso" id="">Criminoso</select>
+            <select name="Heroi_do_Povo" id="">Herói do Povo</select>
+            <select name="Eremita" id="">Eremita</select>
+            <select name="Nobre" id="">Nobre</select>
+            <select name="Forasteiro" id="">Forasteiro</select>
+            <select name="Marinheiro" id="">Marinheiro</select>
+            <select name="Sabio" id="">Sábio</select>
+            <select name="Soldado" id="">Soldado</select>
+            <select name="Orfao" id="">Orfão</select>
+          </mat-select>
         </mat-form-field>
       </div>
     </form>
