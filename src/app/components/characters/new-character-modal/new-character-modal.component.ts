@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CharClassesList, CharPriorsList, CharRacesList } from '../../../utils/character.utils';
 
 @Component({
   selector: 'app-new-character-modal',
@@ -7,17 +8,48 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrl: './new-character-modal.component.scss'
 })
 export class NewCharacterModalComponent {
-  newCharacterFormGroup: FormGroup = new FormGroup({
-    nome: new FormControl(''),
-    classe: new FormControl(''),
-    raca: new FormControl(''),
+  currentPage: 1 | 2 = 1;
+
+  newChar_1_FormGroup: FormGroup = new FormGroup({
+    nome: new FormControl('', [Validators.required]),
+    classe: new FormControl('', [Validators.required]),
+    raca: new FormControl('', [Validators.required]),
     // Deve ter interface, pois dependendo da escolha pode haver sub-raça
-    antecedente: new FormControl(''),
+    antecedente: new FormControl('', [Validators.required]),
     // Deve ter interface, opções
-    nivel: new FormControl(''),
+    nivel: new FormControl('', [Validators.required, Validators.min(1), Validators.max(20)]),
     // Number, 1 a 20
-    alinhamento: new FormControl(''),
+    alinhamento: new FormControl('', [Validators.required]),
     // Deve ter interface, opções
+  });
+
+  newChar_2_FormGroup: FormGroup = new FormGroup({
+    // Os dados abaixo serão dos atributos --> Todos recebem Number até 18
+    forca: new FormControl('', [Validators.min(0), Validators.max(18)]),
+    destreza: new FormControl('', [Validators.min(0), Validators.max(18)]),
+    constituicao: new FormControl('', [Validators.min(0), Validators.max(18)]),
+    inteligencia: new FormControl('', [Validators.min(0), Validators.max(18)]),
+    sabedoria: new FormControl('', [Validators.min(0), Validators.max(18)]),
+    carisma: new FormControl('', [Validators.min(0), Validators.max(18)]),
+    // Os dados abaixo são as perícias --> Receberão Verdadeiro ou Falso
+    acrobacia: new FormControl(false),
+    arcanismo: new FormControl(false),
+    atletismo: new FormControl(false),
+    atuacao: new FormControl(false),
+    enganacao: new FormControl(false),
+    furtividade: new FormControl(false),
+    história: new FormControl(false),
+    intimidacao: new FormControl(false),
+    intuicao: new FormControl(false),
+    investigacao: new FormControl(false),
+    lidar_com_animais: new FormControl(false),
+    medicina: new FormControl(false),
+    natureza: new FormControl(false),
+    percepcao: new FormControl(false),
+    persuasao: new FormControl(false),
+    prestidigitacao: new FormControl(false),
+    religiao: new FormControl(false),
+    sobrevivencia: new FormControl(false),
   });
 
   currentCharacterData = {
@@ -27,65 +59,37 @@ export class NewCharacterModalComponent {
     antecedente: '',
     nivel: '',
     alinhamento: '',
+    forca: '',
+    destreza: '',
+    constituicao: '',
+    inteligencia: '',
+    sabedoria: '',
+    carisma: '',
+    acrobacia: '',
+    arcanismo: '',
+    atletismo: '',
+    atuacao: '',
+    enganacao: '',
+    furtividade: '',
+    história: '',
+    intimidacao: '',
+    intuicao: '',
+    investigacao: '',
+    lidar_com_animais: '',
+    medicina: '',
+    natureza: '',
+    percepcao: '',
+    persuasao: '',
+    prestidigitacao: '',
+    religiao: '',
+    sobrevivencia: '',
   };
 
   @Output() closeModal: EventEmitter<any> = new EventEmitter();
-}
 
-export class NewCharacterModalComponent_segunda_parte {
-  newCharacterFormGroup: FormGroup = new FormGroup({
-    // Os dados abaixo serão dos atributos --> Todos recebem Number até 18
-    Forca: new FormControl(''),
-    Destreza: new FormControl(''),
-    Constituicao: new FormControl(''),
-    Inteligencia: new FormControl(''),
-    Sabedoria: new FormControl(''),
-    Carisma: new FormControl(''),
-    // Os dados abaixo são as perícias --> Receberão Verdadeiro ou Falso
-    Acrobacia: new FormControl(''),
-    Arcanismo: new FormControl(''),
-    Atletismo: new FormControl(''),
-    Atuacao: new FormControl(''),
-    Enganacao: new FormControl(''),
-    Furtividade: new FormControl(''),
-    História: new FormControl(''),
-    Intimidacao: new FormControl(''),
-    Intuicao: new FormControl(''),
-    Investigacao: new FormControl(''),
-    Lidar_com_Animais: new FormControl(''),
-    Medicina: new FormControl(''),
-    Natureza: new FormControl(''),
-    Percepcao: new FormControl(''),
-    Persuasao: new FormControl(''),
-    Prestidigitacao: new FormControl(''),
-    Religiao: new FormControl(''),
-    Sobrevivencia: new FormControl(''),
-  });
+  characterClassesList = CharClassesList;
 
-  currentCharacterData = {
-    Forca: '',
-    Destreza: '',
-    Constituicao: '',
-    Inteligencia: '',
-    Sabedoria: '',
-    Carisma: '',
-    Acrobacia: '',
-    Arcanismo: '',
-    Atletismo: '',
-    Atuacao: '',
-    Enganacao: '',
-    Furtividade: '',
-    História: '',
-    Intimidacao: '',
-    Intuicao: '',
-    Investigacao: '',
-    Lidar_com_Animais: '',
-    Medicina: '',
-    Natureza: '',
-    Percepcao: '',
-    Persuasao: '',
-    Prestidigitacao: '',
-    Religiao: '',
-    Sobrevivencia: '',
-  }
+  characterRacesList = CharRacesList;
+
+  characterPriorsList = CharPriorsList;
 }
