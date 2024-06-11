@@ -1,4 +1,4 @@
-import { CharClasses, CharPriors, CharRaces } from "../interface/character.interface";
+import { CharAlinhamento, CharClasses, CharPriors, CharRaces } from "../interface/character.interface";
 
 export const CharClassesList = [
   CharClasses.ARTIFICE,
@@ -42,4 +42,16 @@ export const CharPriorsList = [
   CharPriors.SABIO,
   CharPriors.SOLDADO,
   CharPriors.ORFAO,
+];
+
+export const CharAlinhamentoList = [
+  CharAlinhamento.LB,
+  CharAlinhamento.LN,
+  CharAlinhamento.LM,
+  CharAlinhamento.NB,
+  CharAlinhamento.NN,
+  CharAlinhamento.NM,
+  CharAlinhamento.CB,
+  CharAlinhamento.CN,
+  CharAlinhamento.CM,
 ];

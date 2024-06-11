@@ -16,6 +16,35 @@
 
         <div class="mt-2 col-12 col-md-6">
           <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Antecedente</mat-label>
+            <mat-select formControlName="antecedente" [value]="currentCharacterData.antecedente">
+              @for (prior of characterPriorsList; track prior;) {
+                <mat-option [value]="prior">{{ prior }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="mt-2 col-12 col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Alinhamento</mat-label>
+            <mat-select formControlName="alinhamento" [value]="currentCharacterData.alinhamento">
+              @for (alinhamento of characterAlinhamentoList; track alinhamento;) {
+                <mat-option [value]="alinhamento">{{ alinhamento }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="mt-2 col-12 col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Nível</mat-label>
+            <input matInput type="number" [value]="currentCharacterData.nivel" formControlName="nivel">
+          </mat-form-field>
+        </div>
+
+        <div class="mt-2 col-12 col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
             <mat-label>Classe</mat-label>
             <mat-select formControlName="classe" [value]="currentCharacterData.classe">
               @for (class of characterClassesList; track class;) {
@@ -35,35 +64,198 @@
             </mat-select>
           </mat-form-field>
         </div>
-
-        <div class="mt-2 col-12 col-md-6">
-          <mat-form-field class="w-100" appearance="outline">
-            <mat-label>Antecedente</mat-label>
-            <mat-select formControlName="antecedente" [value]="currentCharacterData.antecedente">
-              @for (prior of characterPriorsList; track prior;) {
-                <mat-option [value]="prior">{{ prior }}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        </div>
-
-        <div class="mt-2 col-12 col-md-4">
-          <mat-form-field class="w-100" appearance="outline">
-            <mat-label>Nível</mat-label>
-            <input matInput type="number" [value]="currentCharacterData.nivel" formControlName="nivel">
-          </mat-form-field>
-        </div>
-
-        <!-- <div class="mt-2 col-12 col-md-6">
-          <mat-form-field class="w-100" appearance="outline">
-            <mat-label>Alinhamento</mat-label>
-          </mat-form-field>
-        </div> -->
       </form>
     </section>
   }
 
   @if (currentPage === 2) {
+    <section class="box-limited p-4">
+      <form class="row" [formGroup]="newChar_2_FormGroup" autocomplete="off">
+        <div class="mt-2 col-12 col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Força</mat-label>
+            <input matInput type="number" [value]="currentCharacterData.forca" formControlName="forca">
+          </mat-form-field>
+        </div>
 
+        <div class="mt-2 col-12 col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Destreza</mat-label>
+            <input matInput type="number" [value]="currentCharacterData.destreza" formControlName="destreza">
+          </mat-form-field>
+        </div>
+
+        <div class="mt-2 col-12 col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Constituição</mat-label>
+            <input matInput type="number" [value]="currentCharacterData.constituicao" formControlName="constituicao">
+          </mat-form-field>
+        </div>
+
+        <div class="mt-2 col-12 col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Inteligência</mat-label>
+            <input matInput type="number" [value]="currentCharacterData.inteligencia" formControlName="inteligencia">
+          </mat-form-field>
+        </div>
+
+        <div class="mt-2 col-12 col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Sabedoria</mat-label>
+            <input matInput type="number" [value]="currentCharacterData.sabedoria" formControlName="sabedoria">
+          </mat-form-field>
+        </div>
+
+        <div class="mt-2 col-12 col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Carisma</mat-label>
+            <input matInput type="number" [value]="currentCharacterData.carisma" formControlName="carisma">
+          </mat-form-field>
+        </div>
+      </form>
+    </section>
   }
+
+  @if (currentPage === 3) {
+    <section class="box-limited p-4">
+      <form class="row" [formGroup]="newChar_3_FormGroup" autocomplete="off">
+        <div class="d-flex flex-column col-12 col-md-3">
+          <div class="col-12 col-md-6">
+            <mat-checkbox formControlName="acrobacia" [(ngModel)]="currentCharacterData.acrobacia">Acrobacia</mat-checkbox>
+          </div>
+
+          <div class="mt-1 col-12 col-md-6">
+            <mat-checkbox formControlName="arcanismo" [(ngModel)]="currentCharacterData.arcanismo">Arcanismo</mat-checkbox>
+          </div>
+
+          <div class="mt-1 col-12 col-md-6">
+            <mat-checkbox formControlName="atletismo" [(ngModel)]="currentCharacterData.atletismo">Atletismo</mat-checkbox>
+          </div>
+
+          <div class="mt-1 col-12 col-md-6">
+            <mat-checkbox formControlName="atuacao" [(ngModel)]="currentCharacterData.atuacao">Atuação</mat-checkbox>
+          </div>
+
+          <div class="mt-1 col-12 col-md-6">
+            <mat-checkbox formControlName="enganacao" [(ngModel)]="currentCharacterData.enganacao">Enganação</mat-checkbox>
+          </div>
+
+          <div class="mt-1 col-12 col-md-6">
+            <mat-checkbox formControlName="furtividade" [(ngModel)]="currentCharacterData.furtividade">Furtividade</mat-checkbox>
+          </div>
+
+          <div class="mt-1 col-12 col-md-6">
+            <mat-checkbox formControlName="historia" [(ngModel)]="currentCharacterData.historia">História</mat-checkbox>
+          </div>
+
+          <div class="mt-1 col-12 col-md-6">
+            <mat-checkbox formControlName="intimidacao" [(ngModel)]="currentCharacterData.intimidacao">Intimidação</mat-checkbox>
+          </div>
+
+          <div class="mt-1 col-12 col-md-6">
+            <mat-checkbox formControlName="intuicao" [(ngModel)]="currentCharacterData.intuicao">Intuição</mat-checkbox>
+          </div>
+
+          <div class="mt-1 col-12 col-md-6">
+            <mat-checkbox formControlName="investigacao" [(ngModel)]="currentCharacterData.investigacao">Investigação</mat-checkbox>
+          </div>
+
+          <div class="mt-1 col-12 col-md-6">
+            <mat-checkbox formControlName="lidar_com_animais" [(ngModel)]="currentCharacterData.lidar_com_animais">Lidar com animais</mat-checkbox>
+          </div>
+
+          <div class="mt-1 col-12 col-md-6">
+            <mat-checkbox formControlName="medicina" [(ngModel)]="currentCharacterData.medicina">Medicina</mat-checkbox>
+          </div>
+
+          <div class="mt-1 col-12 col-md-6">
+            <mat-checkbox formControlName="natureza" [(ngModel)]="currentCharacterData.natureza">Natureza</mat-checkbox>
+          </div>
+
+          <div class="mt-1 col-12 col-md-6">
+            <mat-checkbox formControlName="percepcao" [(ngModel)]="currentCharacterData.percepcao">Percepção</mat-checkbox>
+          </div>
+
+          <div class="mt-1 col-12 col-md-6">
+            <mat-checkbox formControlName="persuasao" [(ngModel)]="currentCharacterData.persuasao">Persuasão</mat-checkbox>
+          </div>
+
+          <div class="mt-1 col-12 col-md-6">
+            <mat-checkbox formControlName="prestidigitacao" [(ngModel)]="currentCharacterData.prestidigitacao">Prestidigitação</mat-checkbox>
+          </div>
+
+          <div class="mt-1 col-12 col-md-6">
+            <mat-checkbox formControlName="religiao" [(ngModel)]="currentCharacterData.religiao">Religião</mat-checkbox>
+          </div>
+
+          <div class="mt-1 col-12 col-md-6">
+            <mat-checkbox formControlName="sobrevivencia" [(ngModel)]="currentCharacterData.sobrevivencia">Sobrevivência</mat-checkbox>
+          </div>
+        </div>
+
+
+        <div class="d-flex flex-column col-12 col-md-9">
+          <div class="col-12">
+            <mat-form-field class="w-100 min-h-200px" appearance="outline">
+              <mat-label>Traços de personalidade</mat-label>
+              <input matInput type="text" formControlName="tracos_de_personalidade">
+            </mat-form-field>
+          </div>
+
+          <div class="col-12 mt-2">
+            <mat-form-field class="w-100 min-h-200px" appearance="outline">
+              <mat-label>Ideais</mat-label>
+              <input matInput type="text" formControlName="ideais">
+            </mat-form-field>
+          </div>
+
+          <div class="col-12 mt-2">
+            <mat-form-field class="w-100 min-h-200px" appearance="outline">
+              <mat-label>Vínculos</mat-label>
+              <input matInput type="text" formControlName="vinculos">
+            </mat-form-field>
+          </div>
+
+          <div class="col-12 mt-2">
+            <mat-form-field class="w-100 min-h-200px" appearance="outline">
+              <mat-label>Fraquezas</mat-label>
+              <input matInput type="text" formControlName="fraquezas">
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </section>
+  }
+
+  <footer class="d-flex justify-content-between border-t">
+    <div class="d-flex align-items-center">
+      <button
+        mat-stroked-button
+        class="btn text-uppercase mx-2"
+        (click)="closeModal.emit()"
+      >
+        Cancelar
+      </button>
+      @if (currentPage > 1) {
+        <button
+          mat-raised-button
+          class="btn text-uppercase mx-2"
+          (click)="handleStepClick('previous')"
+          color="primary"
+        >
+          Voltar
+        </button>
+      }
+    </div>
+
+    <button
+      mat-raised-button
+      class="btn text-uppercase"
+      color="primary"
+      (click)="handleStepClick('next')"
+    >
+      <!-- [disabled]="!newChar_1_FormGroup.valid || isLastPage" -->
+      Próximo
+    </button>
+  </footer>
 </app-modal>

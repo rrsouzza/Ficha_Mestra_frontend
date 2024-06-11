@@ -53,3 +53,15 @@ export enum CharPriors {
   SOLDADO = 'Soldado',
   ORFAO = 'Órfao',
 }
+
+export enum CharAlinhamento {
+  LB = 'Leal e Bom',
+  LN = 'Leal e Neutro',
+  LM = 'Leal e Mau',
+  NB = 'Neutro e Bom',
+  NN = 'Neutro: o Indeciso',
+  NM = 'Neutro e Mal',
+  CB = 'Caótico e Bom',
+  CN = 'Caótico e Neutro',
+  CM = 'Caótico e Mau ',
+}
