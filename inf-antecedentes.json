@@ -1,0 +1,202 @@
+{
+    "ACOLITO": {
+        "Pericias": "Intuição || Religião",
+        "Idiomas": "Dois à sua escolha.",
+        "Equipamento":"Um símbolo sagrado (um presente dado a você quando entrou para o sacerdócio) || um livro de orações ou uma roda de preces || 5 palitos de incenso || vestimentas || um conjunto de roupas comuns || uma algibeira contendo 15 peças de ouro ",
+        "Habilidade": "Como um acólito, você detém o respeito daqueles que compartilham de sua fé, e pode realizar cerimônias de sua divindade. Você e seus companheiros de aventura podem esperar receber cura gratuita e caridade de um templo, santuário ou outra presença estabilizada de sua fé, embora devam fornecer quaisquer componentes materiais necessários para as magias. Aqueles que compartilham de sua religião vão lhe dar suporte (mas somente a você), para um estilo de vida modesto. Você também pode possuir laços com um templo específico devotado a sua divindade ou panteão, e fixar residência com eles. Pode ser o templo que você esteja acostumado a servir, se ainda tiver boas relações com ele, ou um templo no qual encontrou um novo lar. Enquanto nas proximidades desse templo, você pode invocar os sacerdotes para assisti-lo, conquanto que essa assistência não seja de alguma forma danosa para o membro e que o mantenha em boa relação com seu templo.",
+        "Personalidade":{
+            "1" : "Eu idealizo um herói da minha fé, e constantemente me refiro a seus êxitos e façanhas pessoais.",
+            "2" : "Eu posso encontrar lugar-comum mesmo entre meu sinimigos mais poderosos, sendo empático com eles e sempre trabalhando pela paz.",
+            "3" : "Eu vejo presságios em cada evento e ação. Os deuses estão falando conosco, nós apenas temos de ouvi-los.",
+            "4" : "Nada pode abalar minha atitude positiva.",
+            "5" : "Eu cito (corretamente ou não) textos sagrados e provérbios em quase qualquer situação.",
+            "6" : "Eu sou tolerante (ou intolerante) a qualquer outra fé, e respeito (ou condeno) a adoração a outros deuses.",
+            "7" : "Eu aproveito comida fina, bebidas entre a alta sociedade do meu templo. Minha vida dura me fornece isso.",
+            "8" : "Eu passo tanto tempo em meu templo que possuo pouca prática em lidar com as pessoas do mundo externo."
+        },
+        "Ideal":{
+            "1" : "Tradição. As tradições ancestrais de adoração e sacrifício devem ser preservadas e perpetradas. (Leal)",
+            "2" : "Caridade. Eu sempre tento ajudar aqueles em necessidade, não importando o custo pessoal. (Bom)",
+            "3" : "Mudança. Nós devemos deixar claro que as mudanças divinas são uma constante no mundo. (Caótico)",
+            "4" : "Poder. Eu espero, um dia, chegar ao topo da hierarquizada minha religião. (Leal)",
+            "5" : "Fé. Eu acredito que minha divindade guia minhas ações. Eu tenho fé que, se trabalhar duro, coisas boas acontecerão. (Leal)",
+            "6" : "Aspiração. Eu busco obter a graça do meu deus fazendo com que minhas ações sejam determinadas pelos seus ensinamentos. (Qualquer)"
+        },
+        "Elo":{
+            "1" : "Eu morreria para recuperar uma relíquia ancestral de minha fé, perdida há muito tempo.",
+            "2" : "Eu ainda terei minha vingança sobre o templo corrupto que me acusou de heresia.",
+            "3" : "Eu devo minha vida ao sacerdote que me acolheu quando meus pais faleceram.",
+            "4" : "Tudo o que faço, faço pelo povo.",
+            "5" : "Eu farei qualquer coisa para proteger o templo que sirvo.",
+            "6" : "Eu devo proteger um texto sagrado. Meus inimigos dizem ser herege e tentam destruí-lo."
+        },
+        "Defeito":{
+            "1" : "Eu julgo os outros severamente, e a mim mesmo mais ainda.",
+            "2" : "Eu deposito muita confiança naqueles que detém o poder hierárquico de meu templo.",
+            "3" : "Minha devoção às vezes me cega perante aqueles que professam a fé do meu deus.",
+            "4" : "Meu pensamento é inflexível.",
+            "5" : "Eu suspeito de estranhos, e sempre espero o pior deles.",
+            "6" : "Depois de escolhido um objetivo, eu fico obcecado em cumpri-lo, até mesmo em detrimento de minha própria vida."
+        }
+    },
+    "ARTESAO_DE_GUILDA": {
+        "Pericias": "Intuição || Persuasão",
+        "Idiomas": "Uma ferramenta de artesão.",
+        "Equipamento": "Uma ferramenta de artesão || uma carta de referência de sua guilda || roupas de viajante || 15po",
+        "Tipo_deGuilda": {
+            "1": "Alquimistas e farmacêuticos.",
+            "2":  "Armeiros e armoreiros.",
+            "3":  "Fazedores de bebidas.",
+            "4":  "Calígrafos, escribas e escrivãos.",
+            "5":  "Carpinteiros e rebocadores.",
+            "6":  "Cartógrafos.",
+            "7":  "Sapateiros.",
+            "8":  "Cozinheiros e padeiros.",
+            "9":  "Vidraceiros e fabricantes de vidro.",
+            "10":  "Joalheiros e ourives.",
+            "11":  "Coureiros, esfoladores e curtidores.",
+            "12":  "Maçons e pedreiros.",
+            "13":  "Pintores, e fazedores de sinais.",
+            "14":  "Oleiros.",
+            "15":  "Construtores de barcos e velas.",
+            "16":  "Ferradores e forjadores de metal.",
+            "17":  "Engenhoqueiros e conjuradores.",
+            "18":  "Fazedores de carroças e rodas.",
+            "19":  "Tecelões e tintureiros.",
+            "20":  "Entalhadores e tanoeiros."
+        },
+        "Personalidade": {
+            "1": "Eu acredito que se algo vale a pena ser feito, deve ser feito bem. Não há fuga, eu sou um perfeccionista mesmo.",
+            "2": "Eu sou um esnobe que menospreza quem não sabe apreciar boa arte.",
+            "3": "Eu sempre quero saber como as coisas e pessoas funcionam.",
+            "4": "Eu sou cheio de aforismos e tenho um provérbio para cada ocasião.",
+            "5": "Eu sou rude com pessoas que não tem minha dedicação a trabalho duro.",
+            "6": "Eu gosto de discorrer longamente sobre minha profissão.",
+            "7": "Eu me seguro a meu dinheiro e regateio incansavelmente.",
+            "8": "Eu sou bem conhecido pelo meu trabalho e gosto de saber que as pessoas gostam dele. Eu fico abalado quando pessoas não ouviram falar de mim."
+        },
+        "Ideal":{
+            "1": "Comunidade: É o dever de todo povo civilizado a reforçar os elos de comunidade e segurança da civilização.",
+            "2": "Generosidade: Meus talentos foram dados a mim para que eu os use em benefício do mundo.",
+            "3": "Liberdade: Todo mundo deve ser livre para escolher sua profissão.",
+            "4": "Ganância: Eu estou nisso só pelo dinheiro.",
+            "5": "Pessoas: Eu sou dedicado às pessoas com quem me importo, não a ideais.",
+            "6": "Aspiração: Eu trabalho duro para ser o melhor que há em minha profissão."
+        },
+        "Elo":{
+            "1": "Comunidade: É o dever de todo povo civilizado a reforçar os elos de comunidade e segurança da civilização.",
+            "2": "Generosidade: Meus talentos foram dados a mim para que eu os use em benefício do mundo.",
+            "3": "Liberdade: Todo mundo deve ser livre para escolher sua profissão.",
+            "4": "Ganância: Eu estou nisso só pelo dinheiro.",
+            "5": "Pessoas: Eu sou dedicado às pessoas com quem me importo, não a ideais.",
+            "6": "Aspiração: Eu trabalho duro para ser o melhor que há em minha profissão."
+        },
+        "Defeito":{
+            "1" : "Eu farei qualquer coisa para por minhas mãos em algo raro ou sem preço.",
+            "2" : "Eu rapidamente suponho que alguém está tentando me trapacear.",
+            "3" : "Ninguém deve descobrir que eu roubei dinheiro dos cofres da guilda.",
+            "4" : "Eu nunca estou satisfeito com o que tenho, seu sempre quero mais.",
+            "5" : "Eu mataria por um título de nobreza.",
+            "6" : "Eu sou muito invejoso quando alguém supera minha habilidade. Aonde vou eu vejo rivais."
+        }
+    },
+    "ARTISTA": {
+        "Pericias":"Dois entre || Enganação || Furtividade || Intuição || Persuasão",
+        "Idiomas":"Duas entre || ferramentas de ladrão || instrumento musical || jogo",
+        "Equipamento":"Roupas apropriadas para sua profissão || 20po",
+        "Personalidade":{},
+        "Ideal":{},
+        "Elo":{},
+        "Defeito":{}
+    },
+    "CHARLATAO": {
+        "Pericias":{},
+        "Idiomas":{},
+        "Equipamento":{},
+        "Personalidade":{},
+        "Ideal":{},
+        "Elo":{},
+        "Defeito":{}
+    },
+    "CRIMINOSO": {
+        "Pericias":{},
+        "Idiomas":{},
+        "Equipamento":{},
+        "Personalidade":{},
+        "Ideal":{},
+        "Elo":{},
+        "Defeito":{}
+    },
+    "HEROI_DO_POVO": {
+        "Pericias":{},
+        "Idiomas":{},
+        "Equipamento":{},
+        "Personalidade":{},
+        "Ideal":{},
+        "Elo":{},
+        "Defeito":{}
+    },
+    "EREMITA": {
+        "Pericias":{},
+        "Idiomas":{},
+        "Equipamento":{},
+        "Personalidade":{},
+        "Ideal":{},
+        "Elo":{},
+        "Defeito":{}
+    },
+    "NOBRE": {
+        "Pericias":{},
+        "Idiomas":{},
+        "Equipamento":{},
+        "Personalidade":{},
+        "Ideal":{},
+        "Elo":{},
+        "Defeito":{}
+    },
+    "FORASTEIRO": {
+        "Pericias":{},
+        "Idiomas":{},
+        "Equipamento":{},
+        "Personalidade":{},
+        "Ideal":{},
+        "Elo":{},
+        "Defeito":{}
+    },
+    "MARINHEIRO": {
+        "Pericias":{},
+        "Idiomas":{},
+        "Equipamento":{},
+        "Personalidade":{},
+        "Ideal":{},
+        "Elo":{},
+        "Defeito":{}
+    },
+    "SABIO": {
+        "Pericias":{},
+        "Idiomas":{},
+        "Equipamento":{},
+        "Personalidade":{},
+        "Ideal":{},
+        "Elo":{},
+        "Defeito":{}
+    },
+    "SOLDADO": {
+        "Pericias":{},
+        "Idiomas":{},
+        "Equipamento":{},
+        "Personalidade":{},
+        "Ideal":{},
+        "Elo":{},
+        "Defeito":{}
+    },
+    "ORFAO": {
+        "Pericias":{},
+        "Idiomas":{},
+        "Equipamento":{},
+        "Personalidade":{},
+        "Ideal":{},
+        "Elo":{},
+        "Defeito":{}
+    }
+}
