@@ -13,8 +13,6 @@ export enum CharacterTypesActions {
 
 export class LoadCharacterList implements Action {
   readonly type: string = CharacterTypesActions.LOAD_CHARACTER_LIST;
-
-  constructor(public payload: Payload) { }
 }
 
 export class SetCharacterList implements Action {

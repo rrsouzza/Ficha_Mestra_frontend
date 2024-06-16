@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.state';
-import { userId } from '../../store/user/user.selectors';
 import { AppConfig } from '../../utils/app.config';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Character } from '../../interface/character.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,16 +16,16 @@ export class CharacterService {
     private http: HttpClient,
   ) {}
 
-  getCharactersListByUserId(): Observable<any> {
+  getCharactersListByUserId(userId: string): Observable<any> {
     const { baseUrl } = AppConfig;
-    let usrId = '';
+    return this.http.get(`${baseUrl}/character/get-by-user/${userId}`);
+  }
 
-    this.store.select(userId).subscribe({
-      next: (id) => {
-        usrId = id;
-      },
-    });
+  saveCharacter(body: Character, userId: string, charId?: string): Observable<any> {
+    if (charId) {
+      return this.http.put(`${AppConfig.baseUrl}/character/put/${charId}`, body);
+    }
 
-    return this.http.get(`${baseUrl}/character/get-by-user/${usrId}`);
+    return this.http.post(`${AppConfig.baseUrl}/character/add/${userId}`, body);
   }
 }

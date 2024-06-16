@@ -1,12 +1,42 @@
 export interface Character {
-  class: string;
-  originalStats: {
-    fullHP: number;
-    fullShield: number;
+  id?: string;
+  nome: string;
+  classe: CharClasses;
+  raca: CharRaces;
+  antecedente: CharPriors;
+  nivel: number;
+  alinhamento: CharAlinhamento;
+  atributos: {
+    forca: number;
+    destreza: number;
+    constituicao: number;
+    inteligencia: number;
+    sabedoria: number;
+    carisma: number;
   };
-  currentStats: {
-    currentHP: number;
-    currentShield: number;
+  pericias: {
+    acrobacia: boolean;
+    arcanismo: boolean;
+    atletismo: boolean;
+    atuacao: boolean;
+    enganacao: boolean;
+    furtividade: boolean;
+    historia: boolean;
+    intimidacao: boolean;
+    intuicao: boolean;
+    investigacao: boolean;
+    lidar_com_animais: boolean;
+    medicina: boolean;
+    natureza: boolean;
+    percepcao: boolean;
+    persuasao: boolean;
+    prestidigitacao: boolean;
+    religiao: boolean;
+    sobrevivencia: boolean;
+    tracos_de_personalidade: string;
+    ideais: string;
+    vinculos: string;
+    fraquezas: string;
   };
 }
 

@@ -72,44 +72,80 @@
     <section class="box-limited p-4">
       <form class="row" [formGroup]="newChar_2_FormGroup" autocomplete="off">
         <div class="mt-2 col-12 col-md-6">
-          <mat-form-field class="w-100" appearance="outline">
+          <mat-form-field class="w-100" appearance="outline" >
             <mat-label>Força</mat-label>
-            <input matInput type="number" [value]="currentCharacterData.forca" formControlName="forca">
+            <input
+              matInput
+              type="number"
+              [value]="currentCharacterData.forca"
+              formControlName="forca"
+              placeholder="(-4 a 18)"
+            >
           </mat-form-field>
         </div>
 
         <div class="mt-2 col-12 col-md-6">
           <mat-form-field class="w-100" appearance="outline">
             <mat-label>Destreza</mat-label>
-            <input matInput type="number" [value]="currentCharacterData.destreza" formControlName="destreza">
+            <input
+              matInput
+              type="number"
+              [value]="currentCharacterData.destreza"
+              formControlName="destreza"
+              placeholder="(-4 a 18)"
+            >
           </mat-form-field>
         </div>
 
         <div class="mt-2 col-12 col-md-6">
           <mat-form-field class="w-100" appearance="outline">
             <mat-label>Constituição</mat-label>
-            <input matInput type="number" [value]="currentCharacterData.constituicao" formControlName="constituicao">
+            <input
+              matInput
+              type="number"
+              [value]="currentCharacterData.constituicao"
+              formControlName="constituicao"
+              placeholder="(-4 a 18)"
+            >
           </mat-form-field>
         </div>
 
         <div class="mt-2 col-12 col-md-6">
           <mat-form-field class="w-100" appearance="outline">
             <mat-label>Inteligência</mat-label>
-            <input matInput type="number" [value]="currentCharacterData.inteligencia" formControlName="inteligencia">
+            <input
+              matInput
+              type="number"
+              [value]="currentCharacterData.inteligencia"
+              formControlName="inteligencia"
+              placeholder="(-4 a 18)"
+            >
           </mat-form-field>
         </div>
 
         <div class="mt-2 col-12 col-md-6">
           <mat-form-field class="w-100" appearance="outline">
             <mat-label>Sabedoria</mat-label>
-            <input matInput type="number" [value]="currentCharacterData.sabedoria" formControlName="sabedoria">
+            <input
+              matInput
+              type="number"
+              [value]="currentCharacterData.sabedoria"
+              formControlName="sabedoria"
+              placeholder="(-4 a 18)"
+            >
           </mat-form-field>
         </div>
 
         <div class="mt-2 col-12 col-md-6">
           <mat-form-field class="w-100" appearance="outline">
             <mat-label>Carisma</mat-label>
-            <input matInput type="number" [value]="currentCharacterData.carisma" formControlName="carisma">
+            <input
+              matInput
+              type="number"
+              [value]="currentCharacterData.carisma"
+              formControlName="carisma"
+              placeholder="(-4 a 18)"
+            >
           </mat-form-field>
         </div>
       </form>
@@ -227,8 +263,8 @@
     </section>
   }
 
-  <footer class="d-flex justify-content-between border-t">
-    <div class="d-flex align-items-center">
+  <footer class="d-flex flex-row align-items-end border-t">
+    <div class="d-flex align-items-center col-4">
       <button
         mat-stroked-button
         class="btn text-uppercase mx-2"
@@ -248,14 +284,20 @@
       }
     </div>
 
-    <button
-      mat-raised-button
-      class="btn text-uppercase"
-      color="primary"
-      (click)="handleStepClick('next')"
-    >
-      <!-- [disabled]="!newChar_1_FormGroup.valid || isLastPage" -->
-      Próximo
-    </button>
+    <div class="d-flex justify-content-center col-4">
+      <span class="text-light f-14">Etapa {{ currentPage }} de 3</span>
+    </div>
+
+    <div class="d-flex justify-content-end col-4">
+      <button
+        mat-raised-button
+        class="btn text-uppercase"
+        color="primary"
+        (click)="handleStepClick('next')"
+      >
+        <!-- [disabled]="!newChar_1_FormGroup.valid || isLastPage" -->
+        {{ isLastPage ?  'Salvar' : 'Próximo' }}
+      </button>
+    </div>
   </footer>
 </app-modal>

@@ -18,7 +18,7 @@ export class CharacterEffects {
   constructor(
     private action$: Actions,
     private store$: Store<AppState>,
-    private chracterService: CharacterService,
+    private characterService: CharacterService,
   ) {
     this.loadCharacters$ = createEffect(() =>
       this.action$.pipe(
@@ -26,7 +26,7 @@ export class CharacterEffects {
         withLatestFrom(this.store$.select(userId)),
         mergeMap(
           ([action, user_id]: [ActionPayload, string]): Observable<Action> =>
-            this.chracterService.getCharactersListByUserId().pipe(
+            this.characterService.getCharactersListByUserId(user_id).pipe(
               map((res) => ({
                 type: CharacterTypesActions.SET_CHARACTER_LIST,
                 payload: { data: res },

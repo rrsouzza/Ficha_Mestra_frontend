@@ -4,7 +4,7 @@ import { CharacterState, initialState } from "./character.state";
 export function reducer(state = initialState, action: CharacterActions): CharacterState {
   switch (action.type) {
     case CharacterTypesActions.SET_CHARACTER_LIST: {
-      const { data } = action.payload;
+      const { data } = (action as any).payload;
 
       return {
         ...state,
