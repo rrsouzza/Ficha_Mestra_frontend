@@ -1,0 +1,322 @@
+@if (isEditCharacterModalVisible) {
+  <app-new-character-modal
+    [characterToEdit]="selectedChar"
+    (saveNewChar)="handleSaveEditedChar($event)"
+    (closeModal)="isEditCharacterModalVisible = false"
+  >
+  </app-new-character-modal>
+}
+
+<div class="w-100 h-100vh p-4 bg-primary-900">
+  <div class="h-4vh"></div>
+
+  <header class="d-flex justify-content-between align-items-center px-5 h-5vh">
+    <a
+      class="text-primary-300 d-flex align-items-center standard-link my-2"
+      (click)="routerNavigate('/characters')"
+    >
+      <mat-icon>keyboard_backspace</mat-icon>
+      Voltar para todos os personagens
+    </a>
+
+    <div>
+      <button
+        class="btn bg-accent-700 mx-2"
+        mat-mini-fab
+        [matMenuTriggerFor]="exportOptions"
+      >
+        <mat-icon>download</mat-icon>
+      </button>
+
+      <mat-menu #exportOptions="matMenu" yPosition="below">
+        <button mat-menu-item (click)="handleExportChar('json')">
+          Exportar como JSON
+        </button>
+      </mat-menu>
+
+      <button class="btn bg-accent-700 mx-2" mat-mini-fab (click)="isEditCharacterModalVisible = true">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button class="btn bg-danger mx-2" mat-mini-fab (click)="handleDeleteCharClick()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </header>
+
+  <section class="px-5 h-85">
+    <div class="p-4 bg-primary-700 rounded text-light box-limited h-100">
+      <h2>{{ selectedChar?.nome || '--' }}</h2>
+
+      <mat-divider class="my-4"></mat-divider>
+
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column col-12 col-md-6">
+          <div class="d-flex flex-row mb-4">
+            <span class="f-16">Classe:</span>
+            <span class="badge bg-primary-800 mx-4">{{ selectedChar?.classe || '--' }}</span>
+          </div>
+
+          <div class="d-flex flex-row my-4">
+            <span class="f-16">Alinhamento:</span>
+            <span class="badge bg-primary-800 mx-4">{{ selectedChar?.alinhamento || '--' }}</span>
+          </div>
+
+          <div class="d-flex flex-row my-4">
+            <span class="f-16">Antecedente:</span>
+            <span class="badge bg-primary-800 mx-4">{{ selectedChar?.antecedente || '--' }}</span>
+          </div>
+        </div>
+
+        <div class="d-flex flex-column col-12 col-md-6">
+          <div class="d-flex flex-row mb-4">
+            <span class="f-16">Raça:</span>
+            <span class="badge bg-primary-800 mx-4">{{ selectedChar?.raca || '--' }}</span>
+          </div>
+
+          <div class="d-flex flex-row mb-4">
+            <span class="f-16">Nível:</span>
+            <span class="badge bg-secondary-600 mx-4">{{ selectedChar?.nivel || '--' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <mat-divider class="my-4"></mat-divider>
+
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column col-12 col-md-6">
+          <div class="d-flex flex-row mb-4">
+            <span class="f-16">Força:</span>
+            <span class="badge bg-secondary-600 mx-4">{{ selectedChar?.atributos?.forca || '--' }}</span>
+          </div>
+
+          <div class="d-flex flex-row my-4">
+            <span class="f-16">Destreza:</span>
+            <span class="badge bg-secondary-600 mx-4">{{ selectedChar?.atributos?.destreza || '--' }}</span>
+          </div>
+
+          <div class="d-flex flex-row my-4">
+            <span class="f-16">Constituição:</span>
+            <span class="badge bg-secondary-600 mx-4">{{ selectedChar?.atributos?.constituicao || '--' }}</span>
+          </div>
+        </div>
+
+        <div class="d-flex flex-column col-12 col-md-6">
+          <div class="d-flex flex-row mb-4">
+            <span class="f-16">Inteligência:</span>
+            <span class="badge bg-secondary-600 mx-4">{{ selectedChar?.atributos?.inteligencia || '--' }}</span>
+          </div>
+
+          <div class="d-flex flex-row my-4">
+            <span class="f-16">Sabedoria:</span>
+            <span class="badge bg-secondary-600 mx-4">{{ selectedChar?.atributos?.sabedoria || '--' }}</span>
+          </div>
+
+          <div class="d-flex flex-row my-4">
+            <span class="f-16">Carisma:</span>
+            <span class="badge bg-secondary-600 mx-4">{{ selectedChar?.atributos?.carisma || '--' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <mat-divider class="my-4"></mat-divider>
+
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column col-12 col-md-6">
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">Acrobacia:</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.acrobacia ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.acrobacia ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">Arcanismo:</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.arcanismo ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.arcanismo ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">Atletismo:</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.atletismo ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.atletismo ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">Atuação:</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.atuacao ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.atuacao ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">Enganação:</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.enganacao ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.enganacao ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">Furtividade:</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.furtividade ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.furtividade ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">História:</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.historia ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.historia ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">Intimidação:</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.intimidacao ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.intimidacao ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">Intuição:</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.intuicao ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.intuicao ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">Investigação:</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.investigacao ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.investigacao ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">Lidar: com animais</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.lidar_com_animais ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.lidar_com_animais ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">Medicina:</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.medicina ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.medicina ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">Natureza:</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.natureza ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.natureza ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">Percepção:</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.percepcao ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.percepcao ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">Persuasão:</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.persuasao ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.persuasao ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">Prestidigitação:</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.prestidigitacao ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.prestidigitacao ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">Religião:</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.religiao ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.religiao ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+          <div class="d-flex flex-row my-4">
+            <span class="f-16 me-2">Sobrevivência:</span>
+             <mat-icon
+              class="badge"
+              [ngClass]="selectedChar?.pericias?.sobrevivencia ? 'text-success': 'text-danger'"
+            >
+              {{ selectedChar?.pericias?.sobrevivencia ? 'check' : 'close' }}
+            </mat-icon>
+          </div>
+        </div>
+
+        <div class="d-flex flex-column col-12 col-md-6">
+          <span class="f-16">Traços de personalidade:</span>
+          <div class="border standard-box-shadow border-primary-600 bg-primary-800 mb-2 col rounded">
+            <p class="text-primary-500 p-3">
+              {{ selectedChar?.pericias?.tracos_de_personalidade }}
+            </p>
+          </div>
+
+          <span class="f-16 mt-2">Ideais:</span>
+          <div class="border standard-box-shadow border-primary-600 bg-primary-800 mb-2 col rounded">
+            <p class="text-primary-500 p-3">
+              {{ selectedChar?.pericias?.ideais }}
+            </p>
+          </div>
+
+          <span class="f-16 mt-2">Vínculos:</span>
+          <div class="border standard-box-shadow border-primary-600 bg-primary-800 mb-2 col rounded">
+            <p class="text-primary-500 p-3">
+              {{ selectedChar?.pericias?.vinculos }}
+            </p>
+          </div>
+
+          <span class="f-16 mt-2">Fraquezas:</span>
+          <div class="border standard-box-shadow border-primary-600 bg-primary-800 mb-2 col rounded">
+            <p class="text-primary-500 p-3">
+              {{ selectedChar?.pericias?.fraquezas }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

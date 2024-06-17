@@ -1,7 +1,7 @@
 <div class="d-flex flex-row h-100vh">
   <section class="d-flex w-67vw bg-primary-900 h-100">
     <div class="w-100 p-5">
-      <h1 class="m-2 text-secondary">Ficha Mestra</h1>
+      <img class="logo-default" src="/assets/images/FichaMestra_Logo.svg" />
     </div>
   </section>
 
@@ -35,15 +35,12 @@
         </mat-form-field>
       </form>
 
-      <button
-        mat-raised-button
-        color="primary"
-        class="text-uppercase w-100"
-        [disabled]="!isFormValid"
-        (click)="handleLoginClick()"
+      <app-btn-loading
+        [isLoading]="loginScreenStatus === 'Loading'"
+        (clicked)="handleLoginClick()"
       >
         Login
-      </button>
+      </app-btn-loading>
     </div>
 
     <div class="h-8vh"></div>

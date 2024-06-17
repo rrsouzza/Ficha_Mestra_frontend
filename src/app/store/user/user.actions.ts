@@ -6,19 +6,23 @@ interface Payload {
   name?: string;
 }
 
-export enum UserActions {
+export enum UserTypesActions {
   SET_USER = '[User] Set User',
   UPDATE_USER = '[User] Update User',
 }
 
 export class SetUser implements Action {
-  readonly type: string = UserActions.SET_USER;
+  readonly type: string = UserTypesActions.SET_USER;
 
   constructor(public payload: Payload) { }
 }
 
 export class UpdateUser implements Action {
-  readonly type: string = UserActions.UPDATE_USER;
+  readonly type: string = UserTypesActions.UPDATE_USER;
 
   constructor(public payload: Payload) { }
 }
+
+export type UserActions =
+  SetUser |
+  UpdateUser;

@@ -1,29 +1,39 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { AfterViewInit, Component } from '@angular/core';
+import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../store/app.state';
+import { LoadCharacterList } from '../../store/character/character.actions';
 
 @Component({
   selector: 'app-main-screen',
   templateUrl: './main-screen.component.html',
   styleUrl: './main-screen.component.scss'
 })
-export class MainScreenComponent {
+export class MainScreenComponent implements AfterViewInit {
   menuOptions = [
     { label: 'Home', router: '/home' },
-    { label: 'Link 1', router: '/link1' },
-    { label: 'Link 2', router: '/link2' },
-    { label: 'Link 3', router: '/link3' },
-    { label: 'Link 4', router: '/link4' },
+    { label: 'Personagens', router: '/characters' },
   ];
-
-  username: string = 'Josué';
 
   currentRoute: string = '/home';
 
   constructor(
     private router: Router,
     private authService: AuthService,
-  ) { }
+    private store: Store<AppState>,
+  ) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.currentRoute = event.url;
+      }
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this.authService.currentUser();
+    this.store.dispatch(new LoadCharacterList());
+  }
 
   routerNavigate(path: string) {
     this.router.navigate([path]);

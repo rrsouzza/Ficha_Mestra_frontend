@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<div mat-dialog-content>
+  <p class="text-light f-14">{{ data.message }}</p>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-end">
+  <button
+    *ngIf="!data.dialogTime"
+    mat-stroked-button
+    mat-dialog-close
+    class="text-uppercase"
+    color="accent"
+    (click)="cancel()"
+  >
+    Cancelar
+  </button>
+
+  <button
+    mat-raised-button
+    class="text-uppercase"
+    color="secondary"
+    (click)="confirm()"
+    mat-dialog-close
+    cdkFocusInitial
+  >
+    Confirmar
+    <span *ngIf="data.dialogTime && secondsLeft > 0">{{ secondsLeft }}</span>
+  </button>
+</div>
