@@ -2,7 +2,7 @@ import { EventEmitter, Inject, Injectable } from '@angular/core';
 import { AppConfig } from '../../utils/app.config';
 import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.state';
 import { SetUser } from '../../store/user/user.actions';
@@ -46,44 +46,30 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    // const isTokenValid = !this.helper.isTokenExpired();
-    // if (!isTokenValid) {
-    //   this.userRedirect.emit(true);
-    // } else {
-    //   this.userReady.emit(true);
-    // }
-    // return isTokenValid;
+    // const token = localStorage.getItem('token');
 
-    // if (localStorage) {
-    //   const token = localStorage.getItem('token');
+    // if (token) {
+    //   // this.isTokenValid().subscribe({
+    //   //   next: (res) => true,
+    //   //   error: (err) => {
+    //   //     console.error('Não está autenticado: \n', err);
+    //   //     return false;
+    //   //   },
+    //   // });
 
-    //   if (token) {
-    //     this.userRedirect.emit(true);
-    //     return true;
-    //   } else {
-    //     this.userReady.emit(true);
-    //     return false;
-    //   }
-    // } else {
     //   return true;
     // }
+
+    // return false;
 
     return true;
   }
 
-  isTokenValid() {
+  isTokenValid(): Observable<any> {
     const { baseUrl } = AppConfig;
     const token = localStorage.getItem('token');
 
-    if (token) {
-      this.http.get(`${baseUrl}/validate-token/${token}`).subscribe({
-        next: (res: any) => {
-          return res.success;
-        }
-      });
-    }
-
-    return false;
+    return this.http.get(`${baseUrl}/validate-token/${token}`);
   }
 
   async currentUser() {
