@@ -1,5 +1,6 @@
 export interface Character {
   id?: string;
+  user?: string;
   nome: string;
   classe: CharClasses;
   raca: CharRaces;

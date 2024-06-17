@@ -73,6 +73,28 @@ export class CharacterDetailComponent implements OnDestroy {
     });
   }
 
+  handleExportChar(method: string) {
+    switch (method) {
+      case 'json':
+        const character = { ...this.selectedChar };
+        delete character.id;
+        delete character.user;
+
+        const json = JSON.stringify(character);
+        const element = document.createElement('a');
+        element.setAttribute('href', 'data:text/json;charset=UTF-8,' + encodeURIComponent(json));
+        element.setAttribute('download', `FichaMestra_${character.nome}.json`);
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+
+        break;
+      default:
+        break;
+    }
+  }
+
   routerNavigate(path: string) {
     this.router.navigate([path]);
   }

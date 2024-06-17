@@ -20,6 +20,20 @@
     </a>
 
     <div>
+      <button
+        class="btn bg-accent-700 mx-2"
+        mat-mini-fab
+        [matMenuTriggerFor]="exportOptions"
+      >
+        <mat-icon>download</mat-icon>
+      </button>
+
+      <mat-menu #exportOptions="matMenu" yPosition="below">
+        <button mat-menu-item (click)="handleExportChar('json')">
+          Exportar como JSON
+        </button>
+      </mat-menu>
+
       <button class="btn bg-accent-700 mx-2" mat-mini-fab (click)="isEditCharacterModalVisible = true">
         <mat-icon>edit</mat-icon>
       </button>
