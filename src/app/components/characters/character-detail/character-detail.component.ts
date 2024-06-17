@@ -8,6 +8,7 @@ import { Character } from '../../../interface/character.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../common/dialog/dialog.component';
 import { CharacterService } from '../../../services/character/character.service';
+import { SnackbarService } from '../../../services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-character-detail',
@@ -28,6 +29,7 @@ export class CharacterDetailComponent implements OnDestroy {
     private route: ActivatedRoute,
     private store: Store<AppState>,
     private characterService: CharacterService,
+    private snackbarService: SnackbarService,
   ) {
     const characterId = this.route.snapshot.params['id'];
     this.store.select(characterList).subscribe({
@@ -46,6 +48,7 @@ export class CharacterDetailComponent implements OnDestroy {
   handleSaveEditedChar(editedChar: Character) {
     this.selectedChar = editedChar;
     this.isEditCharacterModalVisible = false;
+    this.snackbarService.openSnackbar('Personagem salvo com sucesso', 'Fechar', 5000);
   }
 
   handleDeleteCharClick() {
@@ -62,7 +65,7 @@ export class CharacterDetailComponent implements OnDestroy {
           this.characterService.deleteCharacter(this.selectedChar.id).subscribe({
             next: () => {
               this.store.dispatch(new RemoveCharacter({ data: { id: this.selectedChar?.id } }));
-              this.routerNavigate('/characters');
+              this.snackbarService.openSnackbar('Personagem excluído com sucesso', 'Fechar', 3500).subscribe(() => this.routerNavigate('/characters'));
             },
           });
         }

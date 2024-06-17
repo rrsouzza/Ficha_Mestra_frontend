@@ -6,6 +6,7 @@ import { characterList } from '../../store/character/character.selectors';
 import { Character } from '../../interface/character.interface';
 import { AppStatus } from '../../interface/app.interface';
 import { Router } from '@angular/router';
+import { SnackbarService } from '../../services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-characters',
@@ -22,6 +23,7 @@ export class CharactersComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private router: Router,
+    private snackbarService: SnackbarService,
   ) {}
 
   ngOnInit() {
@@ -54,6 +56,7 @@ export class CharactersComponent implements OnInit {
 
     this.isCreateCharacterModalVisible = false;
     this.appStatus = AppStatus.SUCCESS;
+    this.snackbarService.openSnackbar('Personagem criado com sucesso', 'Fechar', 5000);
   }
 
   handleSelectCharacter(char: Character) {
