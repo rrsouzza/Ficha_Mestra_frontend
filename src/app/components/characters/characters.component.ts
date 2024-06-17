@@ -32,7 +32,6 @@ export class CharactersComponent implements OnInit {
       next: (res) => {
         this.charList = res;
         this.appStatus = AppStatus.SUCCESS;
-        console.log('this.charList: ', this.charList);
       },
       error: (err) => {
         console.error('Ocorreu um erro ao carregar os personagens: \n', err);
