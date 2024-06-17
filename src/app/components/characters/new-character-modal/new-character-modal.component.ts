@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CharAlinhamentoList, CharClassesList, CharPriorsList, CharRacesList } from '../../../utils/character.utils';
 import { Character } from '../../../interface/character.interface';
@@ -12,7 +12,7 @@ import { AppState } from '../../../store/app.state';
   templateUrl: './new-character-modal.component.html',
   styleUrl: './new-character-modal.component.scss'
 })
-export class NewCharacterModalComponent {
+export class NewCharacterModalComponent implements OnChanges {
   @Input() characterToEdit?: Character;
 
   @Output() closeModal: EventEmitter<any> = new EventEmitter();
@@ -76,32 +76,36 @@ export class NewCharacterModalComponent {
     classe: '',
     raca: '',
     antecedente: '',
-    nivel: '',
+    nivel: 0,
     alinhamento: '',
-    forca: '',
-    destreza: '',
-    constituicao: '',
-    inteligencia: '',
-    sabedoria: '',
-    carisma: '',
-    acrobacia: '',
-    arcanismo: '',
-    atletismo: '',
-    atuacao: '',
-    enganacao: '',
-    furtividade: '',
-    historia: '',
-    intimidacao: '',
-    intuicao: '',
-    investigacao: '',
-    lidar_com_animais: '',
-    medicina: '',
-    natureza: '',
-    percepcao: '',
-    persuasao: '',
-    prestidigitacao: '',
-    religiao: '',
-    sobrevivencia: '',
+    atributos: {
+      forca: 0,
+      destreza: 0,
+      constituicao: 0,
+      inteligencia: 0,
+      sabedoria: 0,
+      carisma: 0,
+    },
+    pericias: {
+      acrobacia: false,
+      arcanismo: false,
+      atletismo: false,
+      atuacao: false,
+      enganacao: false,
+      furtividade: false,
+      historia: false,
+      intimidacao: false,
+      intuicao: false,
+      investigacao: false,
+      lidar_com_animais: false,
+      medicina: false,
+      natureza: false,
+      percepcao: false,
+      persuasao: false,
+      prestidigitacao: false,
+      religiao: false,
+      sobrevivencia: false,
+    },
   };
 
   characterClassesList = CharClassesList;
@@ -120,6 +124,59 @@ export class NewCharacterModalComponent {
     private characterService: CharacterService,
     private store: Store<AppState>,
   ) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['characterToEdit'] && this.characterToEdit) {
+      this.currentCharacterData = {
+        ...this.characterToEdit,
+        atributos: { ...this.characterToEdit.atributos },
+        pericias: { ...this.characterToEdit.pericias },
+      };
+
+      this.newChar_1_FormGroup.setValue({
+        nome: this.characterToEdit.nome,
+        classe: this.characterToEdit.classe,
+        raca: this.characterToEdit.raca,
+        antecedente: this.characterToEdit.antecedente,
+        nivel: this.characterToEdit.nivel,
+        alinhamento: this.characterToEdit.alinhamento,
+      });
+
+      this.newChar_2_FormGroup.setValue({
+        forca: this.characterToEdit.atributos.forca,
+        destreza: this.characterToEdit.atributos.destreza,
+        constituicao: this.characterToEdit.atributos.constituicao,
+        inteligencia: this.characterToEdit.atributos.inteligencia,
+        sabedoria: this.characterToEdit.atributos.sabedoria,
+        carisma: this.characterToEdit.atributos.carisma,
+      });
+
+      this.newChar_3_FormGroup.setValue({
+        acrobacia: this.characterToEdit.pericias.acrobacia,
+        arcanismo: this.characterToEdit.pericias.arcanismo,
+        atletismo: this.characterToEdit.pericias.atletismo,
+        atuacao: this.characterToEdit.pericias.atuacao,
+        enganacao: this.characterToEdit.pericias.enganacao,
+        furtividade: this.characterToEdit.pericias.furtividade,
+        historia: this.characterToEdit.pericias.historia,
+        intimidacao: this.characterToEdit.pericias.intimidacao,
+        intuicao: this.characterToEdit.pericias.intuicao,
+        investigacao: this.characterToEdit.pericias.investigacao,
+        lidar_com_animais: this.characterToEdit.pericias.lidar_com_animais,
+        medicina: this.characterToEdit.pericias.medicina,
+        natureza: this.characterToEdit.pericias.natureza,
+        percepcao: this.characterToEdit.pericias.percepcao,
+        persuasao: this.characterToEdit.pericias.persuasao,
+        prestidigitacao: this.characterToEdit.pericias.prestidigitacao,
+        religiao: this.characterToEdit.pericias.religiao,
+        sobrevivencia: this.characterToEdit.pericias.sobrevivencia,
+        tracos_de_personalidade: this.characterToEdit.pericias.tracos_de_personalidade,
+        ideais: this.characterToEdit.pericias.ideais,
+        vinculos: this.characterToEdit.pericias.vinculos,
+        fraquezas: this.characterToEdit.pericias.fraquezas,
+      })
+    }
+  }
 
   handleStepClick(action: 'previous' | 'next') {
     if (action === 'previous') {

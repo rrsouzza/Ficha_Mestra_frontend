@@ -1,29 +1,16 @@
 <div class="w-100 h-100vh p-4 bg-primary-900">
-  <div class="h-4vh"></div>
+  <section class="d-flex flex-column justify-content-center align-items-center h-100">
+    <h2 class="text-light">Bem-vindo ao</h2>
 
-  <section class="h-5vh">
-    <h2 class="text-light">Bem-vindo!</h2>
-  </section>
+    <div class="my-5">
+      <img class="logo-default" src="/assets/images/FichaMestra_Logo.svg" alt="FichaMestra" />
+    </div>
 
-  <div class="d-flex justify-content-end w-100 px-3">
-    <a
-      class="d-flex standard-link btn text-primary-300 p-0"
-      (click)="routerNavigate('/characters')"
-    >
-      Ver todos os meus personagens
-      <mat-icon>chevron_right</mat-icon>
+    <span class="text-light">
+      Para acessar mais informações sobre esse projeto,
+    </span>
+    <a href="https://github.com/rrsouzza/Ficha_Mestra_frontend" target="_blank">
+      Acesse o repositório no GitHub
     </a>
-  </div>
-
-  <section class="d-flex flex-column justify-content-between w-100 h-80vh p-2">
-    <div class="d-flex flex-row h-40vh p-2">
-      <div class="col-12 col-md-6 border rounded">Primeiro quadrante</div>
-      <div class="col-12 col-md-6 border rounded">Segundo quadrante</div>
-    </div>
-
-    <div class="d-flex flex-row h-40vh p-2">
-      <div class="col-12 col-md-6 border rounded">Terceiro quadrante</div>
-      <div class="col-12 col-md-6 border rounded">Quarto quadrante</div>
-    </div>
   </section>
 </div>

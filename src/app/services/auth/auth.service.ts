@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { EventEmitter, Inject, Injectable } from '@angular/core';
 import { AppConfig } from '../../utils/app.config';
 import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -6,6 +6,7 @@ import { map } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.state';
 import { SetUser } from '../../store/user/user.actions';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class AuthService {
     private http: HttpClient,
     private helper: JwtHelperService,
     private store: Store<AppState>,
+    @Inject(DOCUMENT) private document: Document
   ) {
     this.userReady = new EventEmitter();
     this.userRedirect = new EventEmitter(true);
@@ -85,17 +87,21 @@ export class AuthService {
   }
 
   async currentUser() {
-    const token = localStorage.getItem('token');
-    if (!token) return null;
+    const localStorage = this.document?.defaultView?.localStorage;
 
-    const userStorage = localStorage.getItem('userInfo');
-    if (userStorage) {
-      const user = JSON.parse(userStorage);
-      this.store.dispatch(new SetUser(user));
-      return user;
+    if (localStorage) {
+      const token = localStorage.getItem('token');
+      if (!token) return null;
+
+      const userStorage = localStorage.getItem('userInfo');
+      if (userStorage) {
+        const user = JSON.parse(userStorage);
+        this.store.dispatch(new SetUser(user));
+        return user;
+      }
+
+      return null;
     }
-
-    return null;
   }
 
   logout() {

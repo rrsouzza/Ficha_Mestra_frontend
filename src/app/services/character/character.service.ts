@@ -17,8 +17,7 @@ export class CharacterService {
   ) {}
 
   getCharactersListByUserId(userId: string): Observable<any> {
-    const { baseUrl } = AppConfig;
-    return this.http.get(`${baseUrl}/character/get-by-user/${userId}`);
+    return this.http.get(`${AppConfig.baseUrl}/character/get-by-user/${userId}`);
   }
 
   saveCharacter(body: Character, userId: string, charId?: string): Observable<any> {
@@ -27,5 +26,13 @@ export class CharacterService {
     }
 
     return this.http.post(`${AppConfig.baseUrl}/character/add/${userId}`, body);
+  }
+
+  getCharacterById(charId: string): Observable<any> {
+    return this.http.get(`${AppConfig.baseUrl}/character/get-by-character/${charId}`);
+  }
+
+  deleteCharacter(charId: string): Observable<any> {
+    return this.http.delete(`${AppConfig.baseUrl}/character/delete/${charId}`);
   }
 }

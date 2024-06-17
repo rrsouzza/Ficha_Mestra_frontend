@@ -9,8 +9,8 @@
         <ng-container *ngFor="let link of menuOptions">
           <div class="d-flex justify-content-center my-2">
             <a
-              class="text-primary-300 standard-link my-2"
-              [ngClass]="currentRoute === link.router ? '' : 'text-primary-500'"
+              class="standard-link my-2"
+              [ngClass]="currentRoute.includes(link.router) ? 'text-primary-300' : 'text-primary-500'"
               (click)="routerNavigate(link.router)"
             >
               {{ link.label }}

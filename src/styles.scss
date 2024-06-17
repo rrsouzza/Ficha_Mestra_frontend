@@ -2,22 +2,24 @@
 @use '../styles/material/custom-theme-dark.scss' as *;
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, sans-serif; }
+body { margin: 0; font-family: "Sora", sans-serif; font-size: 14px; }
 
 @include mat.core();
 
 $my-app-primary-dark: mat.define-palette($custom-primary, 900);
-$my-app-accent-dark: mat.define-palette($custom-secondary, 900);
+$my-app-secondary-dark: mat.define-palette($custom-secondary, 900);
+$my-app-accent-dark: mat.define-palette($custom-accent, 600);
 $my-warn: mat.define-palette(mat.$red-palette);
 
 $custom-typography: mat.define-typography-config(
-  $font-family: 'Roboto, sans-serif',
+  $font-family: 'Sora, sans-serif',
 );
 
 $my-app-theme-dark: mat.define-dark-theme(
   (
     color: (
       primary: $my-app-primary-dark,
+      secondary: $my-app-secondary-dark,
       accent: $my-app-accent-dark,
       warn: $my-warn,
     ),
@@ -30,9 +32,9 @@ $my-app-theme-dark: mat.define-dark-theme(
 @include mat.form-field-density(-2);
 
 @mixin bg-creator($theme, $category, $palette, $value) {
-  @if ($category == 'secondary') {
-    $category: 'accent';
-  }
+  // @if ($category == 'secondary') {
+  //   $category: 'accent';
+  // }
 
   .bg-#{$category}-#{$value} {
     background-color: mat.get-color-from-palette($palette, $value);
@@ -43,11 +45,11 @@ $my-app-theme-dark: mat.define-dark-theme(
   };
 
   .border-#{$category}-#{$value} {
-    border-color: mat.get-color-from-palette($palette, $value);
+    border-color: mat.get-color-from-palette($palette, $value) !important;
   }
 };
 
-$categories: ('primary', 'secondary');
+$categories: ('primary', 'secondary', 'accent');
 $values: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900);
 
 .dark-theme {
@@ -61,6 +63,9 @@ $values: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900);
         @include bg-creator('dark-theme', $category, $my-app-primary-dark, $value);
       }
       @if ($category == 'secondary') {
+        @include bg-creator('dark-theme', $category, $my-app-secondary-dark, $value);
+      }
+      @if ($category == 'accent') {
         @include bg-creator('dark-theme', $category, $my-app-accent-dark, $value);
       }
     }
@@ -153,6 +158,10 @@ $values: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900);
 .border {
   border-width: 1px;
 }
+.border-inset {
+  @extend .border;
+  border-style: inset;
+}
 .border-r {
   border-right-width: 1px;
 }
@@ -196,4 +205,21 @@ $values: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900);
 
 .cdk-global-overlay-wrapper, .cdk-overlay-container {
   z-index: 99999 !important;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.badge {
+  border-radius: 9999px;
+  padding: .25rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+.standard-box-shadow {
+  box-shadow: -3px 4px 8px 1px rgba(0, 0, 0, .5);
 }

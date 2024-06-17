@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { Store } from '@ngrx/store';
@@ -10,7 +10,7 @@ import { LoadCharacterList } from '../../store/character/character.actions';
   templateUrl: './main-screen.component.html',
   styleUrl: './main-screen.component.scss'
 })
-export class MainScreenComponent {
+export class MainScreenComponent implements AfterViewInit {
   menuOptions = [
     { label: 'Home', router: '/home' },
     { label: 'Personagens', router: '/characters' },
@@ -28,7 +28,9 @@ export class MainScreenComponent {
         this.currentRoute = event.url;
       }
     });
+  }
 
+  ngAfterViewInit(): void {
     this.authService.currentUser();
     this.store.dispatch(new LoadCharacterList());
   }

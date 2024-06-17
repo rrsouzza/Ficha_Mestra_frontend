@@ -22,6 +22,8 @@ import { ModalComponent } from './components/common/modal/modal.component';
 import { BtnLoadingComponent } from './components/common/btn-loading/btn-loading.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewCharacterModalComponent } from './components/characters/new-character-modal/new-character-modal.component';
+import { CharacterDetailComponent } from './components/characters/character-detail/character-detail.component';
+import { DialogComponent } from './components/common/dialog/dialog.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -39,6 +41,8 @@ export function tokenGetter() {
     ModalComponent,
     BtnLoadingComponent,
     NewCharacterModalComponent,
+    CharacterDetailComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,

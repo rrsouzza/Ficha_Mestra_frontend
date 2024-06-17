@@ -6,6 +6,7 @@ import { CharacterTypesActions } from "./character.actions";
 import { AppState } from "../app.state";
 import { userId } from "../user/user.selectors";
 import { CharacterService } from "../../services/character/character.service";
+import { selectedCharacter } from "./character.selectors";
 
 export interface ActionPayload extends Actions {
   payload?: any;
@@ -29,12 +30,12 @@ export class CharacterEffects {
             this.characterService.getCharactersListByUserId(user_id).pipe(
               map((res) => ({
                 type: CharacterTypesActions.SET_CHARACTER_LIST,
-                payload: { data: res },
+                payload: { characterList: res.data },
               })),
               catchError(() => EMPTY),
             ),
         ),
-      )
-    )
+      ),
+    );
   }
 }

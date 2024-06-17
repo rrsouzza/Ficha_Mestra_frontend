@@ -1,5 +1,6 @@
 @if (isCreateCharacterModalVisible) {
   <app-new-character-modal
+    (saveNewChar)="handleNewCharCreated($event)"
     (closeModal)="isCreateCharacterModalVisible = false"
   >
   </app-new-character-modal>
@@ -8,34 +9,56 @@
 <div class="w-100 h-100vh p-4 bg-primary-900">
   <div class="h-4vh"></div>
 
-  <section class="h-5vh">
+  <header class="d-flex justify-content-between align-items-center px-5 h-5vh">
     <h2 class="text-light">Personagens</h2>
-  </section>
 
-  <div class="d-flex justify-content-end w-100 px-3">
-    <button
-      class="btn"
-      mat-fab
-      color="accent"
-      (click)="isCreateCharacterModalVisible = true"
-    >
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
-
-  <section class="d-flex h-80vh">
-
-  </section>
-
-  <!-- <section class="d-flex flex-column justify-content-between w-100 h-80vh p-2">
-    <div class="d-flex flex-row h-40vh p-2">
-      <div class="col-12 col-md-6 border rounded">Primeiro quadrante</div>
-      <div class="col-12 col-md-6 border rounded">Segundo quadrante</div>
+    <div class="d-flex justify-content-end w-100">
+      <button
+        class="btn"
+        mat-fab
+        color="accent"
+        (click)="isCreateCharacterModalVisible = true"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
     </div>
+  </header>
 
-    <div class="d-flex flex-row h-40vh p-2">
-      <div class="col-12 col-md-6 border rounded">Terceiro quadrante</div>
-      <div class="col-12 col-md-6 border rounded">Quarto quadrante</div>
-    </div>
-  </section> -->
+  <section class="d-flex flex-row mt-5 px-5">
+    @for (character of charList; track character;) {
+      <div class="px-4 col-12 col-md-3 d-flex flex-column">
+        <div class="text-light rounded bg-primary-800 character-box" (click)="handleSelectCharacter(character)">
+          <header class="text-center my-2 border-b">
+            <span class="badge bg-primary-600">
+              {{ character.nome }}
+            </span>
+          </header>
+
+          <mat-divider></mat-divider>
+
+          <div class="d-flex flex-row p-2">
+            <div class="d-flex flex-column col-6 h-100">
+              <span class="text-center my-2 text-bold">Classe</span>
+              <span class="text-center my-2 text-bold">Raça</span>
+              <span class="text-center my-2 text-bold">Antecedente</span>
+              <span class="text-center my-2 text-bold">Alinhamento</span>
+              <span class="text-center my-2 text-bold">Nível</span>
+            </div>
+
+            <mat-divider vertical="true"></mat-divider>
+
+            <div class="d-flex flex-column col-6 h-100">
+              <span class="text-center my-2">{{ character.classe }}</span>
+              <span class="text-center my-2">{{ character.raca }}</span>
+              <span class="text-center my-2">{{ character.antecedente }}</span>
+              <span class="text-center my-2">{{ character.alinhamento }}</span>
+              <div class="text-center my-2">
+                <span class="badge bg-accent-800">{{ character.nivel }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </section>
 </div>

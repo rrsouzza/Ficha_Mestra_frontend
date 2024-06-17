@@ -1,0 +1,8 @@
+.character-box {
+  box-shadow: inset 7px 7px 15px -6px rgba(0, 0, 0, .38), inset -7px -7px 15px -6px rgba(0, 0, 0, .38);
+}
+.character-box:hover {
+  background-color: #3F3F46;
+  cursor: pointer;
+  transition: background-color .15s ease-in-out;
+}
