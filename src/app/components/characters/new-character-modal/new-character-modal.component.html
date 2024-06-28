@@ -4,7 +4,7 @@
   (closeModal)="closeModal.emit()"
 >
   @if (currentPage === 1) {
-    <section class="box-limited p-4">
+    <section class="p-4">
       <form class="row" [formGroup]="newChar_1_FormGroup" autocomplete="off">
 
         <div class="mt-2 col-12 col-md-6">
@@ -69,7 +69,7 @@
   }
 
   @if (currentPage === 2) {
-    <section class="box-limited p-4">
+    <section class="p-4">
       <form class="row" [formGroup]="newChar_2_FormGroup" autocomplete="off">
         <div class="mt-2 col-12 col-md-6">
           <mat-form-field class="w-100" appearance="outline" >
@@ -153,7 +153,7 @@
   }
 
   @if (currentPage === 3) {
-    <section class="box-limited p-4">
+    <section class="p-4">
       <form class="row" [formGroup]="newChar_3_FormGroup" autocomplete="off">
         <div class="d-flex flex-column col-12 col-md-3">
           <div class="col-12 col-md-6">
